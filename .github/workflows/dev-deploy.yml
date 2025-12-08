@@ -1,0 +1,36 @@
+name: Frontend App Learner Dashboard Deploy
+
+on:
+  push:
+    branches:
+      - main
+  
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Deploy Frontend App Learner Dashboard
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            echo "Navigating to frontend-app-learner-dashboard directory..."
+            cd ~/lexconx/tutor-root/env/build/openedx/themes/lexconx-theme
+            echo "Pulling latest changes from repository..."
+            git pull
+            echo "✅ Pulled latest changes"
+            cd ~/lexconx
+            echo "Activating Python virtual environment..."
+            source py-venv/bin/activate
+            echo "🔨 Building MFE image..."
+            tutor local do settheme lexconx-theme
+            echo "✅ Theme set to lexconx-theme"
+            echo "🔄 Rebooting Open edX services..."
+            tutor local reboot -d
+            echo "✅ Open edX services rebooted"
+            echo "🎉 Lexconx theme deployed successfully! ($(date))"
