@@ -30,7 +30,7 @@ jobs:
             echo "🔨 Setting theme to lexconx-theme..."
             tutor local do settheme lexconx-theme
             echo "✅ Theme set to lexconx-theme"
-            tutor local images build openedx
+            tutor images build openedx
             echo "🔄 Rebooting Open edX services..."
             tutor local restart lms cms
             echo "✅ Open edX services rebooted"
