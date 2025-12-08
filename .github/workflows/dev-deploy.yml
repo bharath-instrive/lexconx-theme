@@ -27,10 +27,11 @@ jobs:
             cd ~/lexconx
             echo "Activating Python virtual environment..."
             source py-venv/bin/activate
-            echo "🔨 Building MFE image..."
+            echo "🔨 Setting theme to lexconx-theme..."
             tutor local do settheme lexconx-theme
             echo "✅ Theme set to lexconx-theme"
+            tutor local images build openedx
             echo "🔄 Rebooting Open edX services..."
-            tutor local reboot -d
+            tutor local restart lms cms
             echo "✅ Open edX services rebooted"
             echo "🎉 Lexconx theme deployed successfully! ($(date))"
