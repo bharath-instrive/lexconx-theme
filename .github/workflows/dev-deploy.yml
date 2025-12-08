@@ -32,6 +32,6 @@ jobs:
             echo "✅ Theme set to lexconx-theme"
             tutor images build openedx
             echo "🔄 Rebooting Open edX services..."
-            tutor local restart lms cms
+            tutor local reboot -d
             echo "✅ Open edX services rebooted"
             echo "🎉 Lexconx theme deployed successfully! ($(date))"
