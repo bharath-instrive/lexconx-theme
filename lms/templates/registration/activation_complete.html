@@ -1,0 +1,19 @@
+<%inherit file="../main.html" />
+<%! from django.utils.translation import ugettext as _ from django.core.urlresolvers import reverse %>
+
+    <%block name="body">
+        <div class="activation-redirect-container" style="text-align: center; padding: 50px;">
+            <h1>${_("Verification Complete!")}</h1>
+            <p>${_("We are taking you back to the application...")}</p>
+
+            <a href="https://corporate.lexconx.com/" class="btn btn-primary" style="margin-top: 20px;">
+                ${_("Click here if not redirected")}
+            </a>
+        </div>
+
+        <script type="text/javascript">
+            // Redirect immediately to your app
+            // You can change '/login' to whatever page handles the post-verification logic
+            window.location.href = "https://corporate.lexconx.com/"; 
+        </script>
+    </%block>
