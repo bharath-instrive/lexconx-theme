@@ -259,6 +259,70 @@ from common.djangoapps.pipeline_mako import render_require_js_path_overrides
   % endif
 
   <style>
+      /* =========================
+   MAKO COURSE MATERIAL TABS
+   ========================= */
+
+.course-material .course-tabs > li.tab > a {
+  font-family: "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+  font-size: 17px !important;
+  font-weight: 500;
+  line-height: 20px;
+  color: #454545;
+  text-decoration: none;
+  padding: 14px 14px;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+/*Remove Space Between Li tabs */
+.course-material .course-tabs > li {
+    margin:0px !important;
+}
+
+/* Active tab */
+.course-material .course-tabs > li.tab > a.active {
+  color: rgb(231,94,40) !important;
+}
+
+/* Kill original underline styles */
+.course-material .course-tabs > li.tab > a,
+.course-material .course-tabs > li.tab > a.active {
+  border-bottom: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+
+/* Underline for active (MFE-like) */
+.course-material .course-tabs > li.tab > a.active::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 0px;
+  height: 3px;
+  background-color: #E75E28;
+  border-radius: 12px;
+}
+
+/* Optional: hover underline (same as MFE) */
+.course-material .course-tabs > li.tab > a:hover {
+  color: rgb(231,94,40) !important;
+  background-color:#e9e6e4 !important;  
+}
+
+/* Remove default list styling */
+.course-material .course-tabs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 0px !important;
+}
+
     @font-face {
         font-family: 'GeneralSans';
         src: url('https://dev.lexconx.com/static/indigo/fonts/GeneralSans-Variable.ttf')
